@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>vRASession</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>IsExpired</Name>
+                <Script>[DateTimeOffset]::Now -lt $this.TokenExpiration</Script>
+            </ScriptMethod>
+        </Members>
+    </Type>
+</Types>
