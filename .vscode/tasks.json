@@ -1,0 +1,127 @@
+// Available variables which can be used inside of strings.
+// ${workspaceRoot}: the root folder of the team
+// ${file}: the current opened file
+// ${relativeFile}: the current opened file relative to workspaceRoot
+// ${fileBasename}: the current opened file's basename
+// ${fileDirname}: the current opened file's dirname
+// ${fileExtname}: the current opened file's extension
+// ${cwd}: the current working directory of the spawned process
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+
+  // Start PowerShell
+  "windows": {
+    "options": {
+      "shell": {
+        "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "args": [ "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command" ]
+      }
+    }
+  },
+  "linux": {
+    "options": {
+        "shell": {
+            "executable": "/usr/bin/pwsh",
+            "args": [ "-NoProfile", "-Command" ]
+        }
+    }
+  },
+  "osx": {
+      "options": {
+          "shell": {
+              "executable": "/usr/local/bin/pwsh",
+              "args": [ "-NoProfile", "-Command" ]
+          }
+      }
+  },
+
+  // Associate with test task runner
+  "tasks": [
+    {
+      "label": "Analyze",
+      "type": "shell",
+      "command": ".\\build\\build.ps1 -Task Analyze",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Update Module Manifest",
+      "type": "shell",
+      "command": ".\\build\\build.ps1 -Task UpdateModuleManifest",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Test (psake)",
+      "group": "test",
+      "type": "shell",
+      "command": ".\\build\\build.ps1 -Task Test -Properties @{PesterExcludeTags = @('ignore')}",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [
+        {
+          "owner": "powershell",
+          "fileLocation": ["absolute"],
+          "severity": "error",
+          "pattern": [
+            {
+              "regexp": "^\\s*(\\[-\\]\\s*.*?)(\\d+)ms\\s*$",
+              "message": 1
+            },
+            {
+              "regexp": "^\\s+at\\s+[^,]+,\\s*(.*?):\\s+line\\s+(\\d+)$",
+              "file": 1,
+              "line": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Test (no psake)",
+      "group": "test",
+      "type": "shell",
+      "command": "Import-Module -Name ./Dependencies/Pester/4.4.3.1/Pester.psd1; Invoke-Gherkin -Path ./specs/features -ExcludeTag ignore -PesterOption (New-PesterOption -TestSuiteName 'PesterGherkinMockScopeTests' -IncludeVSCodeMarker)",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [
+        {
+          "owner": "powershell",
+          "fileLocation": ["absolute"],
+          "severity": "error",
+          "pattern": [
+            {
+              "regexp": "^\\s*(\\[-\\]\\s*.*?)(\\d+)ms\\s*$",
+              "message": 1
+            },
+            {
+              "regexp": "^\\s+at\\s+[^,]+,\\s*(.*?):\\s+line\\s+(\\d+)$",
+              "file": 1,
+              "line": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Build",
+      "group": "build",
+      "type": "shell",
+      "command": ".\\build\\build.ps1 -Task Build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+    }
+  ]
+}

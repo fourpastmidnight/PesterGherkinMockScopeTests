@@ -1,0 +1,19 @@
+{
+	"default": true,
+	"no-hard-tabs": true,
+	"MD004": false,
+	"MD007": {
+		"indent": 4
+	},
+	"MD024": false,
+	"MD026": {
+		"punctuation": ".,;:!"
+	},
+	"MD029": {
+		"style": "one"
+	},
+	"MD033": false,
+	"MD034": false,
+	"MD038": false,
+	"MD042": false
+}

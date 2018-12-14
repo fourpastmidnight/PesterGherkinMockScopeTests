@@ -1,0 +1,92 @@
+{
+  "devskim.ignoreRulesList": [
+    "DS104456",
+    "DS137138"
+  ],
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "files.associations": {
+    "*.ps1xml": "xml"
+  },
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": false,
+  "files.trimTrailingWhitespace": false,
+  "gherkin-indent.stepIndent": 7,
+  "git.allowForcePush": false,
+  "git.autorefresh": true,
+  "git.rebaseWhenSync": true,
+  "markdown.extension.italic.indicator": "_",
+  "markdown.extension.showExplorer": true,
+  "markdown.extension.syntax.decorations": true,
+  "markdown.extension.toc.githubCompatibility": true,
+  "markdown.extension.toc.orderedList": true,
+  "markdown.preview.fontSize": 16,
+  "markdown.preview.lineHeight": 1.5,
+  "markdownlint.config": {
+    "default": true,
+    "no-hard-tabs": true,
+    "MD004": false,
+    "MD007": {
+      "indent": 4
+    },
+    "MD024": false,
+    "MD026": {
+      "punctuation": ".,;:!"
+    },
+    "MD029": {
+      "style": "one"
+    },
+    "MD033": false,
+    "MD034": false,
+    "MD038": false,
+    "MD042": false
+  },
+  "powershell.codeFormatting.alignPropertyValuePairs": true,
+  "powershell.codeFormatting.ignoreOneLineBlock": true,
+  "powershell.codeFormatting.preset": "OTBS",
+  "powershell.codeFormatting.whitespaceAfterSeparator": true,
+  "powershell.codeFormatting.whitespaceAroundOperator": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+  "powershell.debugging.createTemporaryIntegratedConsole": true,
+  "powershell.scriptAnalysis.enable": true,
+  "powershell.scriptAnalysis.settingsPath": "",
+  "powershell.startAutomatically": true,
+  "trailing-spaces.syntaxIgnore": ["feature"],
+  "[git-commit]": {
+    "editor.rulers": [
+      50,
+      75
+    ],
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 80,
+    "editor.wrappingIndent": "same"
+  },
+  "[feature]": {
+    "editor.quickSuggestions": {
+      "comments": false,
+      "strings": true,
+      "other": true
+    },
+    "editor.renderWhitespace": "all"
+  },
+  "[markdown]": {
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [240],
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 240,
+    "editor.wrappingIndent": "same"
+  },
+  "[powershell]": {
+    "editor.rulers": [115],
+    "files.trimTrailingWhitespace": true,
+    "files.encoding": "utf8bom"
+  }
+}

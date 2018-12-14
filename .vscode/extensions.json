@@ -1,0 +1,22 @@
+{
+	// See http://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+                "ms-vscode.powershell", // PowerShell language support for VS Code
+                "ms-devskim.vscode-devskim", // Provides hints about potentially insecure code
+                "yzhang.markdown-all-in-one", // Provides excellent Markdown support in VS Code
+                "davidanson.vscode-markdownlint", // Provides linting for markdown files
+                "eamodio.gitlens", // The awesomest extension for Git and VS Code
+                "donjayamanne.githistory", // Not required, but for those who like GUI-based displays like GitKraken....
+                "editorconfig.editorconfig", // .editorconfig support for VS Code
+                "blodwynn.featurehighlight", // provides editor syntax highlighting for Gherkin feature files
+                "aravindkumar.gherkin-indent", // provides a command to help automatically format gherkin files
+                "sanaajani.taskrunnercode"     // allows you to simply click the task name in an explorer panel instead of F1 -> Run task... -> choose task
+	],
+	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+	"unwantedRecommendations": [
+
+	]
+}

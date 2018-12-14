@@ -1,0 +1,113 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "PowerShell",
+            "request": "launch",
+            "name": "PowerShell Launch Current File",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${file}"
+        },
+        {
+            "type": "PowerShell",
+            "request": "launch",
+            "name": "PowerShell Launch Current File in Temporary Console",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${file}",
+            "createTemporaryIntegratedConsole": true
+        },
+        {
+            "type": "PowerShell",
+            "request": "launch",
+            "name": "PowerShell Launch Current File w/Args Prompt",
+            "script": "${file}",
+            "args": [ "${command:SpecifyScriptArgs}" ],
+            "cwd": "${file}"
+        },
+        {
+            "type": "PowerShell",
+            "request": "launch",
+            "name": "PowerShell Interactive Session",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+          "type": "PowerShell",
+          "request": "launch",
+          "name": "PowerShell Pester Tests/Gherkin Scenarios",
+          "script": ".\\build\\build.ps1",
+          "args": [
+            "-Task",
+            "DebugTest",
+            "-Properties",
+            "@{PesterExcludeTags = @('ignore')}"
+          ],
+          "cwd": "${workspaceRoot}",
+          "createTemporaryIntegratedConsole": true
+        },
+        {
+          "type": "PowerShell",
+          "request": "launch",
+          "name": "(Custom) PowerShell Pester Tests/Gherkin Scenarios",
+          "script": "Import-Module -Name ./Dependencies/Pester/4.4.3.1/Pester.psd1; Invoke-Gherkin",
+          "args": [
+            "-Path ./specs/features",
+            "-ExcludeTag ignore",
+            "-PesterOption (New-PesterOption -TestSuiteName 'PesterGherkinMockSopeTests' -IncludeVSCodeMarker)"
+          ],
+          "cwd": "${workspaceRoot}",
+          "createTemporaryIntegratedConsole": true
+        },
+        {
+          "type": "PowerShell",
+          "request": "launch",
+          "name": "(Official) PowerShell Pester Tests/Gherkin Scenarios",
+          "script": "Import-Module Pester; Invoke-Gherkin",
+          "args": [
+            "-Path ./specs/features",
+            "-ExcludeTag ignore",
+            "-PesterOption (New-PesterOption -TestSuiteName 'PesterGherkinMockSopeTests' -IncludeVSCodeMarker)"
+          ],
+          "cwd": "${workspaceRoot}",
+          "createTemporaryIntegratedConsole": true
+        },
+        {
+          "type": "PowerShell",
+          "request": "launch",
+          "name": "(Custom) PowerShell Pester Gherkin Scenarios w/ Scenario Name(s) Prompt",
+          "script": "Import-Module -Name ./Dependencies/Pester/4.4.3.1/Pester.psd1; Invoke-Gherkin",
+          "args": [
+            "-Path ./specs/features",
+            "-ExcludeTag ignore",
+            "-PesterOption (New-PesterOption -TestSuiteName 'PesterGherkinMockSopeTests' -IncludeVSCodeMarker)",
+            "-ScenarioName",
+            "${command:SpecifyScriptArgs}",
+          ],
+          "cwd": "${workspaceRoot}",
+          "createTemporaryIntegratedConsole": true
+        },
+        {
+          "type": "PowerShell",
+          "request": "launch",
+          "name": "(Official) PowerShell Pester Gherkin Scenarios w/ Scenario Name(s) Prompt",
+          "script": "Import-Module Pester; Invoke-Gherkin",
+          "args": [
+            "-Path ./specs/features",
+            "-ExcludeTag ignore",
+            "-PesterOption (New-PesterOption -TestSuiteName 'PesterGherkinMockSopeTests' -IncludeVSCodeMarker)",
+            "-ScenarioName",
+            "${command:SpecifyScriptArgs}",
+          ],
+          "cwd": "${workspaceRoot}",
+          "createTemporaryIntegratedConsole": true
+        },
+        {
+            "type": "PowerShell",
+            "request": "attach",
+            "name": "PowerShell Attach to Host Process",
+            "processId": "${command:PickPSHostProcess}",
+            "runspaceId": 1
+        }
+    ]
+}
